@@ -7,7 +7,10 @@ import { GET_TRACE } from "./SearchQueries";
 class SearchContainer extends React.Component {
   public render() {
     return (
-      <Query query={GET_TRACE}>
+      <Query
+        query={GET_TRACE}
+        variables={{ company_id: 123, delivery_id: "321" }}
+      >
         {({ loading, error, data }) => {
           console.log(data);
           if (loading) {

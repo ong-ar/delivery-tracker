@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const GET_TRACE = gql`
-  query getTrace($company_id: Int = 123, $delivery_id: String = "asta") {
+  query getTrace($company_id: Int!, $delivery_id: String!) {
     GetTrace(company_id: $company_id, delivery_id: $delivery_id) {
       trace {
         delivery_id
