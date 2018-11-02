@@ -139,10 +139,27 @@
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
 
+"@zendeskgarden/react-buttons@^3.6.8":
+  version "3.6.8"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-buttons/-/react-buttons-3.6.8.tgz#9b4a9576788b64c8e55a5ff0a62f80ef9dc66d1d"
+  dependencies:
+    "@zendeskgarden/react-selection" "^4.6.0"
+    "@zendeskgarden/react-utilities" "^0.2.2"
+    classnames "^2.2.5"
+    dom-helpers "^3.3.1"
+
 "@zendeskgarden/react-selection@^4.6.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-selection/-/react-selection-4.6.0.tgz#59554db5c26b0f6a21ac53569d156a7f7b1d44bc"
   dependencies:
+    classnames "^2.2.5"
+    dom-helpers "^3.3.1"
+
+"@zendeskgarden/react-tables@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tables/-/react-tables-1.0.8.tgz#b5819bb27952f3693f4ba0ccac8ed8b42170a353"
+  dependencies:
+    "@zendeskgarden/react-selection" "^4.6.0"
     classnames "^2.2.5"
     dom-helpers "^3.3.1"
 

@@ -1,26 +1,58 @@
 import * as React from "react";
-import SearchPresenter from "../Search/SearchPresenter";
+import { RouteComponentProps } from "react-router-dom";
 import HomePresenter from "./HomePresenter";
 
 interface IState {
-  companyId: number;
-  deliveryId: string;
+  company_id: number;
+  delivery_id: string;
 }
 
-class HomeContainer extends React.Component<IState> {
+interface IProps extends RouteComponentProps<any> {
+  history: any;
+}
+
+class HomeContainer extends React.Component<IProps, IState> {
   public state = {
-    companyId: null,
-    deliveryId: ""
+    company_id: 1,
+    delivery_id: ""
   };
-  public onSubmit: React.FormEventHandler<HTMLFormElement> = event => {
-    event.preventDefault();
+
+  public onButtonClick = () => {
+    this.props.history.push({
+      pathname: "/search",
+      search:
+        "?company_id=" +
+        this.state.company_id +
+        "&delivery_id=" +
+        this.state.delivery_id
+    });
   };
+
+  public onSelectChange = selectedOption => {
+    const { value } = selectedOption;
+
+    this.setState({ company_id: value });
+  };
+
+  public onInputChange: React.ChangeEventHandler<
+    HTMLInputElement | HTMLSelectElement
+  > = event => {
+    const {
+      target: { name, value }
+    } = event;
+    this.setState({
+      [name]: value
+    } as any);
+  };
+
   public render() {
-    if (this.state.companyId !== null && this.state.deliveryId) {
-      return <SearchPresenter data={this.state} />;
-    } else {
-      return <HomePresenter />;
-    }
+    return (
+      <HomePresenter
+        onInputChange={this.onInputChange}
+        onSelectChange={this.onSelectChange}
+        onButtonClick={this.onButtonClick}
+      />
+    );
   }
 }
 export default HomeContainer;

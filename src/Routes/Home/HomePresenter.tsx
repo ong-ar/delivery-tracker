@@ -1,4 +1,5 @@
 import * as React from "react";
+import Button from "../../Components/Button";
 import Input from "../../Components/Input";
 import Select from "../../Components/Select";
 import searchImg from "../../images/search.png";
@@ -33,15 +34,22 @@ const Content200 = styled.div`
   width: 200px;
 `;
 
-const companyId = [{ value: "001", label: "대한통운" }];
+const companyId = [
+  { value: "1", label: "대한통운" },
+  { value: "2", label: "한통운대" }
+];
 
-const handleKeyPress = e => {
-  if (e.key === "Enter") {
-    console.log("do validate");
-  }
-};
+interface IProps {
+  onInputChange: any;
+  onSelectChange: any;
+  onButtonClick: any;
+}
 
-const HomePresenter: React.SFC = ({}) => (
+const HomePresenter: React.SFC<IProps> = ({
+  onInputChange,
+  onSelectChange,
+  onButtonClick
+}) => (
   <Container>
     <Header>
       <SearchImage>
@@ -49,13 +57,32 @@ const HomePresenter: React.SFC = ({}) => (
       </SearchImage>
     </Header>
     <Content>
-      <Content200>
-        <Select options={companyId} placeholder="택배사 선택" />
-      </Content200>
-      <br />
-      <Content500>
-        <Input onKeyPress={handleKeyPress} />
-      </Content500>
+      <form action="/search" method="GET">
+        <Content200>
+          <Select
+            name="company_id"
+            options={companyId}
+            placeholder="택배사 선택"
+            onChange={onSelectChange}
+          />
+        </Content200>
+        <br />
+        <Content500>
+          <Input
+            name="delivery_id"
+            placeholder="운송장 번호 (ex: 01234455678)"
+            style={{ width: "70%", float: "left" }}
+            onChange={onInputChange}
+          />
+          <Button
+            style={{
+              float: "left",
+              onClick: onButtonClick,
+              width: "30%"
+            }}
+          />
+        </Content500>
+      </form>
     </Content>
   </Container>
 );
